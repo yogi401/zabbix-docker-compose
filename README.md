@@ -60,7 +60,7 @@ ZBX_LISTENPORT=10050
 mkdir ~/zabbix-server
 cd ~/zabbix-server
 git clone https://github.com/yogi401/zabbix-server.git
-cd zabbix-server
+cd zabbix-docker-compose
 docker-compose --build
 docker-compose up -d
 ```
