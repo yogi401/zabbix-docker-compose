@@ -8,6 +8,19 @@ zabbix-server-agent: 172.16.239.5
 #mysql-server: 172.20.1.53 
 ```
 
+### mysql库配置
+
+```
+grant all on *.* to 'root'@'%' identified by 'Admin@mysql00' with grant option;
+#避免出现从docker连不上宿主机mysql错误
+#**** MySQL server is not available. Waiting 5 seconds...
+
+create database zabbix default charset 'utf8' collate 'utf8_bin';
+create user 'zabbix'@'%' identified 'Zabbix@mysql00';
+grant all on zabbix.* to 'zabbix'@'%';
+```
+
+
 ### 路径说明
 zabbix-web docker build将字体文件拷贝到zabbix-web-apache-mysql中重新构建镜像，修复中文乱码的问题。  
 zbx_env zabbix挂载路径  
